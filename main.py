@@ -9,7 +9,12 @@ CORS(app)
 api = Api(app)
 
 
-@app.route('/all/products')
+@app.route('/')
+def index():
+    return send_from_directory(app.static_folder, 'index.html')
+
+
+@app.get('/all/products')
 def get_all_products():
     connect = sql.connect('supermarket.db')
     cursor = connect.cursor()
@@ -20,7 +25,7 @@ def get_all_products():
     return jsonify(list(data))
 
 
-@app.route('/all/stores')
+@app.get('/all/stores')
 def get_all_stores():
     connect = sql.connect('supermarket.db')
     cursor = connect.cursor()
