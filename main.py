@@ -1,13 +1,12 @@
 from flask import Flask, send_from_directory
 from flask_restful import Api
-from flask_cors import CORS, logging
+from flask_cors import CORS
+from api_handlers import all, add
 
 
-app = Flask('__main__', static_url_path='', static_folder='build')
+app = Flask('__main__', static_url_path='', static_folder='ui/dist')
 CORS(app)
 api = Api(app)
-
-logging.getLogger('flask_cors').level = logging.DEBUG
 
 
 @app.route('/')
@@ -18,6 +17,10 @@ def index():
 @app.route('/about')
 def about():
     return 'This is a flask app!!'
+
+
+api.add_resource(all, '/db')
+api.add_resource(add, '/add')
 
 
 if __name__ == "__main__":

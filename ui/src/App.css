@@ -1,0 +1,59 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  margin: 0;
+  color: #000;
+  background: #7b7b7b;
+  font-size: 16pt;
+}
+
+.navbar a {
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0.25em 0.5em;
+}
+
+.navbar a:hover {
+  background: #222;
+  color: #eee;
+}
+
+.page {
+  width: 100%;
+}
+
+.homepage {
+  display: grid;
+  grid-auto-flow: row;
+  padding: 0.5em;
+  gap: 0.5em;
+  place-items: center;
+}
+
+.card {
+  border: #7b7b7b solid 2px;
+  width: 100%;
+  border-radius: 10px;
+  padding: 0.5em;
+  display: grid;
+  grid-template-columns: 1fr 5ch;
+}
+
+.qty-input {
+  width: 5ch;
+  padding: 0.1em;
+  border-radius: 5px;
+  outline: none;
+}
+
+.purchase-btn {
+  width: 10em;
+  font-size: 24pt;
+  background: greenyellow;
+  border-radius: 5px;
+}
+
+.purchase-btn:active {
+  background: hsl(84, 100%, 50%);
+}
