@@ -1,0 +1,25 @@
+{
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "xprotocol"
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 33060,
+      "driver": "MySQL",
+      "name": "MYSQL",
+      "username": "root",
+      "database": "College",
+      "connectionTimeout": 100,
+      "password": "RPass#123"
+    },
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "Local",
+      "database": "${workspaceFolder:Mini-Project-Python-DBMS}/supermarket.db"
+    }
+  ],
+  "sqltools.useNodeRuntime": true
+}
