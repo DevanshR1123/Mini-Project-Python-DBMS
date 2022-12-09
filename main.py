@@ -50,22 +50,34 @@ def get_all_customers():
 def get_all_invoices():
     with sql.connect('supermarket.db') as connect:
         cursor = connect.cursor()
-        res = cursor.execute('''SELECT Invoice_ID.Purchases,
-        Customers.First_name,
-        Customers.Last_name,
-        Stores.Branch,
-        Stores.City,
-        Stores.ID,
-        Purchases.Prod_ID,
-        Purchases.Quantity,
-        Purchases,Total_Amount
-        FROM Purchases,Stores,City,Customers
-        WHERE Purchases.Prod_ID=Products.ID
-        AND Purchases.Store_ID=Stores.ID
-        AND Purchases.Cust_ID=Customers.ID
+        res = cursor.execute('''
+            SELECT
+                Purchases.Invoice_ID,
+                Customers.First_name,
+                Customers.Last_name,
+                Stores.City,
+                Stores.Branch,
+                Purchases.Quantity,
+                Total_Amount
+            FROM
+                Purchases,
+                Stores,
+                Customers,
+                Products
+            WHERE
+                Purchases.Prod_ID = Products.ID
+                AND Purchases.Store_ID = Stores.ID
+                AND Purchases.Cust_ID = Customers.ID;
         ''')
-        data = map(lambda x: {'city': x[0], 'branch_count': x[1]}, res)
-    return jsonify(data)
+        data = map(lambda x: {
+                   'id': x[0],
+                   'cust_name': x[1] + ' ' + x[2],
+                   'store_city': x[3],
+                   'branch': x[4],
+                   'quantity': x[5],
+                   'total_amount': x[6]
+                   }, res)
+    return jsonify(list(data))
 
 
 @app.get('/stock')
@@ -86,7 +98,8 @@ def get_stock():
                 Stock.Prod_ID = Products.ID
                 AND Stock.Store_ID = Stores.ID
             ORDER BY
-                Products.ID ;''')
+                Products.ID;
+                ''')
         dict_data = map(
             lambda x: {'prod_name': x[0], 'store_city': x[1], 'branch': x[2], 'stock': x[3]}, data)
     return jsonify(list(dict_data))
