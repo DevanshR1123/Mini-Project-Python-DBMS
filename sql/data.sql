@@ -37,4 +37,4 @@ VALUES
     (11, 'Raj', 'Panchal', 'Male'),
     (12, 'Keya', 'Suvarna', 'Female'),
     (13, 'Nidhi', 'Tiwari', 'Female'),
-    (14, 'Vallavi', 'Lmao', 'Female');
+    (14, 'Vallavi', 'Sheth', 'Female');
