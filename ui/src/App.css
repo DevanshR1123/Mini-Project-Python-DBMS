@@ -113,6 +113,10 @@
   border: #000 2px solid;
 }
 
+.query-output {
+  overflow: scroll;
+}
+
 .execute-btn {
   width: 10em;
   font-size: 24pt;
@@ -123,4 +127,16 @@
 
 .execute-btn:active {
   background: hsl(84, 100%, 50%);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 24pt;
+}
+.table tr:nth-child(even) {
+  background: #b6b6b6;
+}
+.table td {
+  padding: 0.2em;
 }

@@ -1,8 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 const QueryPage = () => {
   const QueryIn = useRef<HTMLTextAreaElement>(null);
-  const QueryOut = useRef<HTMLDivElement>(null);
+
+  const [Data, setData] = useState([[]]);
 
   const executeQuery = async () => {
     let query = QueryIn.current?.value.toString().trim();
@@ -12,8 +13,7 @@ const QueryPage = () => {
       body: query,
     });
     let data = await res.json();
-    //@ts-ignore
-    QueryOut.current.innerHTML = data;
+    setData(data);
   };
 
   return (
@@ -22,7 +22,19 @@ const QueryPage = () => {
         className='query-input'
         name='queryinput'
         ref={QueryIn}></textarea>
-      <div className='query-output' ref={QueryOut}></div>
+      <div className='query-output'>
+        <table className='table'>
+          <tbody>
+            {Data.map(x => (
+              <tr>
+                {x.map(c => (
+                  <td>{c}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <input
         type='submit'
         value='Execute'

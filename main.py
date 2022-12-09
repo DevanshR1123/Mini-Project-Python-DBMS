@@ -73,10 +73,10 @@ def purchase():
 def query():
     with sql.connect('supermarket.db') as connect:
         cursor = connect.cursor()
-        query_str = request.data
+        query_str = request.data.decode('utf-8')
         print(query_str)
-        # res = cursor.execute(query_str)
-    return jsonify('hello')
+        res = cursor.execute(query_str)
+    return jsonify(list(res))
 
 
 @app.route('/about')
