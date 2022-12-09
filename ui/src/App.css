@@ -99,3 +99,17 @@
 .loc-table td {
   padding: 0.2em;
 }
+
+.querypage {
+  display: grid;
+  gap: 1em;
+  height: 80vh;
+  grid-template-columns: 1fr 1fr;
+}
+
+.query-input,
+.query-output {
+  width: 100%;
+  height: 100%;
+  border: #000 2px solid;
+}

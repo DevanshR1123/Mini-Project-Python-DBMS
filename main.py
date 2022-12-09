@@ -1,5 +1,5 @@
 import sqlite3 as sql
-from flask import Flask, send_from_directory, jsonify
+from flask import Flask, send_from_directory, jsonify, request
 from flask_restful import Api
 from flask_cors import CORS
 
