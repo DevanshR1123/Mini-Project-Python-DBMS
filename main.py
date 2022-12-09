@@ -45,11 +45,8 @@ def get_all_customers():
 def get_all_invoices():
     with sql.connect('supermarket.db') as connect:
         cursor = connect.cursor()
-        res= cursor.execute(
-            SELECT Invoice_ID, FROM 
-        data = map(lambda x:{'city': x[0], 'branch_count': x[1]},res)
-        )
-
+        res = cursor.execute('SELECT Invoice_ID, FROM')
+        data = map(lambda x: {'city': x[0], 'branch_count': x[1]}, res)
 
 
 @app.get('/stock')
