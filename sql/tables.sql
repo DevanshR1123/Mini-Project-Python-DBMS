@@ -24,7 +24,7 @@ CREATE TABLE Customers(
 CREATE TABLE Stock(
     Prod_ID INT,
     Store_ID INT,
-    Qunatity INT,
+    Quantity INT,
     FOREIGN KEY(Prod_ID) REFERENCES Products(ID),
     FOREIGN KEY (Store_ID) REFERENCES Stores(ID)
 );

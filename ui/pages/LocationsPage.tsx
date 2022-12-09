@@ -20,7 +20,7 @@ const LocationsPage = () => {
 
   return (
     <div className='locationpage page'>
-      <table className='loc-table'>
+      <table className='loc-table table'>
         <thead>
           <td>City</td>
           <td>No. of Branches</td>

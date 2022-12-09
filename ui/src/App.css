@@ -83,20 +83,20 @@
   background: hsl(84, 100%, 50%);
 }
 
-.loc-table {
-  width: 100%;
+.table {
+  width: 90%;
   border-collapse: collapse;
   font-size: 24pt;
 }
 
-.loc-table thead {
+.table thead {
   font-weight: bold;
 }
-.loc-table tr:nth-child(even) {
+.table tr:nth-child(even) {
   background: #b6b6b6;
 }
 
-.loc-table td {
+.table td {
   padding: 0.2em;
 }
 
@@ -127,16 +127,4 @@
 
 .execute-btn:active {
   background: hsl(84, 100%, 50%);
-}
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 24pt;
-}
-.table tr:nth-child(even) {
-  background: #b6b6b6;
-}
-.table td {
-  padding: 0.2em;
 }
