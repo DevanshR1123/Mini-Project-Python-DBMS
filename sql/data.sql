@@ -20,7 +20,7 @@ VALUES
     (4, 'Delhi', 'A'),
     (5, 'Delhi', 'B'),
     (6, 'Banglore', 'A');
-    
+
 INSERT INTO
     Customers (ID, First_name, Last_Name, Gender)
 VALUES
@@ -37,4 +37,4 @@ VALUES
     (11, 'Raj', 'Panchal', 'Male'),
     (12, 'Keya', 'Suvarna', 'Female'),
     (13, 'Nidhi', 'Tiwari', 'Female'),
-    (14, 'Vallavi', 'Sheth', 'Female');
+    (14, 'Vallavi', 'Lmao', 'Female');
