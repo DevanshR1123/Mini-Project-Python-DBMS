@@ -45,10 +45,16 @@ def get_all_customers():
     return jsonify(list(dict_data))
 
 
+
 @app.get('/all/invoices')
 def get_all_invoices():
-    pass
-
+    with sql.connect('supermarket.db') as connect:
+        cursor = connect.cursor()
+        res= cursor.execute(
+            "SELECT * FROM Purchases" )
+        data = map(lambda x:{'INVOICE_ID': x[0], 'PRODUCT_ID': x[1],'STORE_ID':x[2],'QUANTITY':x[3],'TOTAL_PRICE':x[4]},res)
+    return jsonify(list(data))
+        
 
 @app.get('/stock')
 def get_stock():
@@ -72,7 +78,6 @@ def query():
 @app.route('/about')
 def about():
     return 'This is a flask app!!'
-
 
 
 if __name__ == "__main__":

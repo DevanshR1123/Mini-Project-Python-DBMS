@@ -20,3 +20,21 @@ VALUES
     (4, 'Delhi', 'A'),
     (5, 'Delhi', 'B'),
     (6, 'Banglore', 'A');
+    
+INSERT INTO
+    Customers (ID, First_name, Last_Name, Gender)
+VALUES
+    (1, 'Abhay', 'Mathur', 'Male'),
+    (2, 'Devansh', 'Rathor', 'Male'),
+    (3, 'Jahaan', 'Desai', 'Male'),
+    (4, 'Rachit', 'Patni', 'Male'),
+    (5, 'Naman', 'Lakhani', 'Male'),
+    (6, 'Aashish', 'Charaya', 'Male'),
+    (7, 'Krish', 'Gopani', 'Male'),
+    (8, 'Vividha', 'Jagtap', 'Female'),
+    (9, 'Varun', 'Pillai', 'Male'),
+    (10, 'Mahir', 'Madhani', 'Male'),
+    (11, 'Raj', 'Panchal', 'Male'),
+    (12, 'Keya', 'Suvarna', 'Female'),
+    (13, 'Nidhi', 'Tiwari', 'Female'),
+    (14, 'Vallavi', 'Sheth', 'Female');
