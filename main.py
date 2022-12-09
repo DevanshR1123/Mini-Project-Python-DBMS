@@ -38,44 +38,35 @@ def get_all_stores():
 
 @app.get('/all/customers')
 def get_all_customers():
-    with sql.connect('supermarket.db') as connect:
-        cur = connect.cursor()
-        data = cur.execute("SELECT * FROM Customers")
-        dict_data = map(lambda x: {
-                        'cust_id': x[0], 'first_name': x[1], 'last_name': x[2], 'gender': x[3]}, data)
-    return jsonify(list(dict_data))
+    pass
 
 
 @app.get('/all/invoices')
 def get_all_invoices():
     with sql.connect('supermarket.db') as connect:
         cursor = connect.cursor()
-        res = cursor.execute()
-        data = map(lambda x: {'city': x[0], 'branch_count': x[1]}, res)
+        res= cursor.execute('''SELECT Invoice_ID.Purchases,
+        Customers.First_name,
+        Customers.Last_name,
+        Stores.Branch,
+        Stores.City,
+        Stores.ID,
+        Purchases.Prod_ID,
+        Purchases.Quantity,
+        Purchases,Total_Amount
+        FROM Purchases,Stores,City,Customers 
+        WHERE Purchases.Prod_ID=Products.ID 
+        AND Purchases.Store_ID=Stores.ID
+        AND Purchases.Cust_ID=Customers.ID
+        ''')
+        data = map(lambda x:{'city': x[0], 'branch_count': x[1]},res)
+        return jsonify(data)
+
 
 
 @app.get('/stock')
 def get_stock():
-    with sql.connect('supermarket.db') as connect:
-        cur = connect.cursor()
-        data = cur.execute('''
-            SELECT
-                Products.Name,
-                Stores.City,
-                Stores.Branch,
-                Stock.Quantity
-            FROM
-                Stock,
-                Products,
-                Stores
-            WHERE
-                Stock.Prod_ID = Products.ID
-                AND Stock.Store_ID = Stores.ID
-            ORDER BY
-                Products.ID ;''')
-        dict_data = map(
-            lambda x: {'prod_name': x[0], 'store_city': x[1], 'branch': x[2], 'stock': x[3]}, data)
-    return jsonify(list(dict_data))
+    pass
 
 
 @app.get('/purchase')
@@ -83,14 +74,9 @@ def purchase():
     pass
 
 
-@app.post('/query')
+@app.get('/query')
 def query():
-    with sql.connect('supermarket.db') as connect:
-        cursor = connect.cursor()
-        query_str = request.data.decode('utf-8')
-        print(query_str)
-        res = cursor.execute(query_str)
-    return jsonify(list(res))
+    pass
 
 
 @app.route('/about')
