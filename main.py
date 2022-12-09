@@ -41,7 +41,7 @@ def get_all_customers():
     with sql.connect('supermarket.db') as connect:
         cur=connect.cursor()
         data=cur.execute("SELECT * FROM Customers")
-        dict_data=map(lambda x:{'CUSTOMER_ID':x[0],'First_Name':x[1],'Last_Name':x[2],'Gender':x[3]},data)
+        dict_data=map(lambda x:{'CUSTOMER_ID':x[0],'FIRST_NAME':x[1],'LAST_NAME':x[2],'GENDER':x[3]},data)
     return jsonify(list(dict_data))
 
 
@@ -52,7 +52,11 @@ def get_all_invoices():
 
 @app.get('/stock')
 def get_stock():
-    pass
+    with sql.connect('supermarket.db') as connect:
+        cur=connect.cursor()
+        data=cur.execute("SELECT * FROM Stock")
+        dict_data=map(lambda x:{'PRODUCT_ID':x[0],'STORE_ID':x[1],'AVAIABLE_STOCK':x[2]},data)
+    return jsonify(list(dict_data))
 
 
 @app.get('/purchase')
