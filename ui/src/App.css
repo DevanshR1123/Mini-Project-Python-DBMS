@@ -23,7 +23,7 @@
   width: 100%;
   display: grid;
   place-items: center;
-  padding: 0.5em;
+  padding: 1em;
 }
 
 .homepage {
@@ -32,8 +32,8 @@
 }
 
 .card {
+  width: 95%;
   border: #7b7b7b solid 2px;
-  width: 100%;
   border-radius: 10px;
   padding: 0.5em;
   display: grid;

@@ -23,7 +23,7 @@ const LocationsPage = () => {
       <table className='loc-table'>
         <thead>
           <td>City</td>
-          <td>Branches</td>
+          <td>No. of Branches</td>
         </thead>
         {Locations.map(x => (
           <tr>

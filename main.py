@@ -16,24 +16,39 @@ def index():
 
 @app.get('/all/products')
 def get_all_products():
-    connect = sql.connect('supermarket.db')
-    cursor = connect.cursor()
-    res = cursor.execute("SELECT * FROM Products;")
-    data = map(lambda x: {'id': x[0], 'name': x[1],
-               'category': x[2], 'price': x[3]}, res)
+    with sql.connect('supermarket.db') as connect:
+        cursor = connect.cursor()
+        res = cursor.execute("SELECT * FROM Products;")
+        data = map(lambda x: {'id': x[0], 'name': x[1],
+                              'category': x[2], 'price': x[3]}, res)
 
     return jsonify(list(data))
 
 
 @app.get('/all/stores')
 def get_all_stores():
-    connect = sql.connect('supermarket.db')
-    cursor = connect.cursor()
-    res = cursor.execute(
-        "SELECT City, Count(Branch) FROM Stores GROUP BY City;")
-    data = map(lambda x: {'city': x[0], 'branch_count': x[1]}, res)
+    with sql.connect('supermarket.db') as connect:
+        cursor = connect.cursor()
+        res = cursor.execute(
+            "SELECT City, Count(Branch) FROM Stores GROUP BY City;")
+        data = map(lambda x: {'city': x[0], 'branch_count': x[1]}, res)
 
     return jsonify(list(data))
+
+
+@app.get('/all/customers')
+def get_all_customers():
+    pass
+
+
+@app.get('/all/invoices')
+def get_all_invoices():
+    pass
+
+
+@app.get('/query')
+def query():
+    pass
 
 
 @app.route('/about')
