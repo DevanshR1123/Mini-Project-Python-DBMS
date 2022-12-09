@@ -67,7 +67,11 @@ def get_stock():
 
 @app.get('/purchase')
 def purchase():
-    pass
+    with sql.connect('supermarket.db') as connect:
+        cur=connect.cursor()
+        data=cur.execute("SELECT * FROM Purchases")
+        dict_data=map(lambda x:{'invoice_id':x[0],'product_id':x[1],'store_id':x[2],'quantity':x[2],'total_price':x[3]},data)
+    return jsonify(list(dict_data))
 
 
 @app.get('/query')
