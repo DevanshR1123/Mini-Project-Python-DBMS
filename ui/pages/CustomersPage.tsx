@@ -28,15 +28,17 @@ const CustomersPage = () => {
           <td>Name</td>
           <td>Gender</td>
         </thead>
-        {Customers.map(x => (
-          <tr>
-            <td>{x.cust_id}</td>
-            <td>
-              {x.first_name} {x.last_name}
-            </td>
-            <td>{x.gender}</td>
-          </tr>
-        ))}
+        <tbody>
+          {Customers.map(x => (
+            <tr>
+              <td>{x.cust_id}</td>
+              <td>
+                {x.first_name} {x.last_name}
+              </td>
+              <td>{x.gender}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );

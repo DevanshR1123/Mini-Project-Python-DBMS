@@ -32,21 +32,18 @@ ORDER BY
     Products.ID;
 
 SELECT
-    Invoice_ID.Purchases,
+    Purchases.Invoice_ID,
     Customers.First_name,
     Customers.Last_name,
-    Stores.Branch,
     Stores.City,
-    Stores.ID,
-    Purchases.Prod_ID,
+    Stores.Branch,
     Purchases.Quantity,
-    Purchases,
     Total_Amount
 FROM
     Purchases,
     Stores,
-    City,
-    Customers
+    Customers,
+    Products
 WHERE
     Purchases.Prod_ID = Products.ID
     AND Purchases.Store_ID = Stores.ID

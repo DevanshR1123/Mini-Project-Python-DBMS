@@ -28,15 +28,17 @@ const StocksPage = () => {
           <td>Store</td>
           <td>Stock Amount</td>
         </thead>
-        {Stocks.map(x => (
-          <tr>
-            <td>{x.prod_name}</td>
-            <td>
-              {x.store_city} Branch {x.branch}
-            </td>
-            <td>{x.stock}</td>
-          </tr>
-        ))}
+        <tbody>
+          {Stocks.map(x => (
+            <tr>
+              <td>{x.prod_name}</td>
+              <td>
+                {x.store_city} Branch {x.branch}
+              </td>
+              <td>{x.stock}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );

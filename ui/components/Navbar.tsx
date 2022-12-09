@@ -10,6 +10,7 @@ const Navbar = () => {
       <Link to='/invoices'>Invoices</Link>
       <Link to='/customers'>Customers</Link>
       <Link to='/query'>Query</Link>
+      <Link to='/about'>About</Link>
     </nav>
   );
 };

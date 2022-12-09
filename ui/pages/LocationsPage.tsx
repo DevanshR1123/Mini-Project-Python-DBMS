@@ -25,11 +25,13 @@ const LocationsPage = () => {
           <td>City</td>
           <td>No. of Branches</td>
         </thead>
-        {Locations.map(x => (
-          <tr>
-            <td>{x.city}</td> <td>{x.branch_count}</td>
-          </tr>
-        ))}
+        <tbody>
+          {Locations.map(x => (
+            <tr>
+              <td>{x.city}</td> <td>{x.branch_count}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );

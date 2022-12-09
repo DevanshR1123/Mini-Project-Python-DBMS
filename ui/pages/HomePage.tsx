@@ -1,5 +1,4 @@
 import React, { ChangeEventHandler, useEffect, useState } from "react";
-
 interface Product {
   id: number;
   name: string;
@@ -30,13 +29,19 @@ const HomePage = () => {
 
   const CustChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
-    setCustomer(x => ({ ...x, [name]: value }));
-    console.log(Customer);
+    if (name == "id") setCustomer(x => ({ ...x, id: parseInt(value) }));
+    else setCustomer(x => ({ ...x, [name]: value }));
   };
 
-  const purchase = () => {
-    console.log(Customer);
-    console.log(Qty);
+  const purchase = async () => {
+    //@ts-ignore
+    let res = await fetch(`http://127.0.0.1:3001/customer/${Customer.id}`, {
+      method: "POST",
+      body: JSON.stringify({ customer: Customer, products: Qty }),
+    });
+    let data = await res.json();
+    console.log(data);
+    setPurchase(data);
   };
 
   useEffect(() => {
@@ -55,6 +60,12 @@ const HomePage = () => {
         <input type='text' name='first_name' id='fname' onChange={CustChange} />
         <label htmlFor='#lname'>Last Name: </label>
         <input type='text' name='last_name' id='lname' onChange={CustChange} />
+        <label htmlFor='#gender'>Gender: </label>
+        <input type='text' name='gender' id='gender' onChange={CustChange} />
+        <label htmlFor='#city'>City: </label>
+        <input type='text' name='city' id='city' onChange={CustChange} />
+        <label htmlFor='#branch'>Branch: </label>
+        <input type='text' name='branch' id='branch' onChange={CustChange} />
       </div>
       <input
         type='submit'
@@ -62,7 +73,20 @@ const HomePage = () => {
         className='purchase-btn'
         onClick={purchase}
       />
-      {Purchase ? <div className='purchase-invoice'></div> : null}
+      {Purchase ? (
+        <div className='purchase-invoice'>
+          {/*@ts-ignore*/}
+          {Purchase.cust_name} bought: <br />
+          <ul>
+            {/*@ts-ignore*/}
+            {Purchase.purchases.map(x => (
+              <li>
+                {x.qty}x {x.name} for ₹{x.total_amount}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
     </div>
   );
 };
