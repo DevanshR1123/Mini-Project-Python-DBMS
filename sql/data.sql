@@ -20,7 +20,7 @@ VALUES
     (4, 'Delhi', 'A'),
     (5, 'Delhi', 'B'),
     (6, 'Banglore', 'A');
-
+    
 INSERT INTO
     Customers (ID, First_name, Last_Name, Gender)
 VALUES
@@ -38,3 +38,20 @@ VALUES
     (12, 'Keya', 'Suvarna', 'Female'),
     (13, 'Nidhi', 'Tiwari', 'Female'),
     (14, 'Vallavi', 'Sheth', 'Female');
+    
+INSERT INTO
+    Stock (Prod_ID, Store_ID, Qunatity)
+VALUES
+    (1, 1, 50),
+    (1, 2, 100),
+    (4, 1, 620),
+    (1, 5, 530),
+    (7, 1, 420),
+    (5, 6, 69),
+    (2, 3, 34),
+    (1, 4, 23),
+    (3, 4, 72),
+    (9, 6, 64),
+    (8, 5, 109),
+    (6, 1, 8),
+    (2, 6, 780);
