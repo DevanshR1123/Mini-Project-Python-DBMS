@@ -35,7 +35,7 @@ const HomePage = () => {
 
   const purchase = async () => {
     //@ts-ignore
-    let res = await fetch(`http://127.0.0.1:3001/customer/${Customer.id}`, {
+    let res = await fetch(`http://127.0.0.1:3001/purchase/${Customer.id}`, {
       method: "POST",
       body: JSON.stringify({ customer: Customer, products: Qty }),
     });

@@ -106,7 +106,7 @@ def get_stock():
     return jsonify(list(dict_data))
 
 
-@app.post('/customer/<int:cust_id>')
+@app.post('/purchase/<int:cust_id>')
 def customer(cust_id):
     body = json.loads(request.data.decode('utf-8'))
     with sql.connect('supermarket.db') as connect:
@@ -177,11 +177,6 @@ def customer(cust_id):
         'cust_name': ' '.join(cust_name),
         'purchases': purchased
     })
-
-
-@app.post('/purchase')
-def purchase():
-    pass
 
 
 @app.post('/query')
