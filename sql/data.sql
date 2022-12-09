@@ -38,3 +38,16 @@ VALUES
     (12, 'Keya', 'Suvarna', 'Female'),
     (13, 'Nidhi', 'Tiwari', 'Female'),
     (14, 'Vallavi', 'Sheth', 'Female');
+    
+INSERT INTO
+    Stock (Prod_ID, Store_ID, Qunatity)
+VALUES
+    (1, 1, 50),
+    (1, 2, 100),
+    (4, 1, 620),
+    (1, 5, 530),
+    (7, 1, 420),
+    (6, 6, 69),
+    (2, 3, 34),
+    (1, 4, 23),
+    (2, 6, 780);
