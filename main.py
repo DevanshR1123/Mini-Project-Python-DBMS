@@ -46,6 +46,16 @@ def get_all_invoices():
     pass
 
 
+@app.get('/stock')
+def get_stock():
+    pass
+
+
+@app.get('/purchase')
+def purchase():
+    pass
+
+
 @app.get('/query')
 def query():
     pass
