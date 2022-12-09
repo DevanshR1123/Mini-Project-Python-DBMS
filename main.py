@@ -39,30 +39,28 @@ def get_all_stores():
 @app.get('/all/customers')
 def get_all_customers():
     with sql.connect('supermarket.db') as connect:
-        cur=connect.cursor()
-        data=cur.execute("SELECT * FROM Customers")
-        dict_data=map(lambda x:{'CUSTOMER_ID':x[0],'FIRST_NAME':x[1],'LAST_NAME':x[2],'GENDER':x[3]},data)
+        cur = connect.cursor()
+        data = cur.execute("SELECT * FROM Customers")
+        dict_data = map(lambda x: {
+                        'CUSTOMER_ID': x[0], 'FIRST_NAME': x[1], 'LAST_NAME': x[2], 'GENDER': x[3]}, data)
     return jsonify(list(dict_data))
-
 
 
 @app.get('/all/invoices')
 def get_all_invoices():
     with sql.connect('supermarket.db') as connect:
         cursor = connect.cursor()
-        res= cursor.execute(
-            SELECT Invoice_ID, FROM 
-        data = map(lambda x:{'city': x[0], 'branch_count': x[1]},res)
-        )
-
+        res = cursor.execute()
+        data = map(lambda x: {'city': x[0], 'branch_count': x[1]}, res)
 
 
 @app.get('/stock')
 def get_stock():
     with sql.connect('supermarket.db') as connect:
-        cur=connect.cursor()
-        data=cur.execute("SELECT * FROM Stock")
-        dict_data=map(lambda x:{'PRODUCT_ID':x[0],'STORE_ID':x[1],'AVAIABLE_STOCK':x[2]},data)
+        cur = connect.cursor()
+        data = cur.execute("SELECT * FROM Stock")
+        dict_data = map(
+            lambda x: {'PRODUCT_ID': x[0], 'STORE_ID': x[1], 'AVAIABLE_STOCK': x[2]}, data)
     return jsonify(list(dict_data))
 
 
@@ -71,9 +69,14 @@ def purchase():
     pass
 
 
-@app.get('/query')
+@app.post('/query')
 def query():
-    pass
+    with sql.connect('supermarket.db') as connect:
+        cursor = connect.cursor()
+        query_str = request.data
+        print(query_str)
+        # res = cursor.execute(query_str)
+    return jsonify('hello')
 
 
 @app.route('/about')

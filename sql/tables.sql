@@ -33,8 +33,10 @@ CREATE TABLE Purchases(
     Invoice_ID INTEGER PRIMARY KEY AUTOINCREMENT,
     Prod_ID INT,
     Store_ID INT,
+    Cust_ID INT,
     Quantity INT,
     Total_Amount REAL,
     FOREIGN KEY(Prod_ID) REFERENCES Products(ID),
-    FOREIGN KEY(Store_ID) REFERENCES Stores(ID)
+    FOREIGN KEY(Store_ID) REFERENCES Stores(ID),
+    FOREIGN KEY(Cust_ID) REFERENCES Customers(ID)
 );
