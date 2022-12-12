@@ -134,8 +134,6 @@ def customer(cust_id):
                                     {'city': body['customer']['city'],
                                      'branch': body['customer']['branch']}))[0][0]
 
-        print(store)
-
         purchased = []
 
         for prod_id, qty in body['products'].items():
